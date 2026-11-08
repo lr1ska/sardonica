@@ -1,9 +1,20 @@
-﻿# The script of the game goes in this file.
+# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
 define e = Character("Eileen")
+
+# Объявляем анимированный фон для меню
+image sardonica_menu_bg:
+    size (1920, 1080)
+    "images/menu_1.jpg"
+    pause 0.6
+    "images/menu_2.jpg"
+    pause 0.6
+    "images/menu_3.jpg"
+    pause 0.6
+    repeat
 
 
 # The game starts here.

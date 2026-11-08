@@ -351,30 +351,37 @@ style navigation_button_text:
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
 screen main_menu():
-
-    ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
+    # 1. Выводим наш анимированный фон
+    add "sardonica_menu_bg"
 
-    ## This empty frame darkens the main menu.
-    frame:
-        style "main_menu_frame"
+    # 2. Создаем невидимые кнопки поверх нарисованных
+    vbox:
+        xalign 0.50       # Выравниваем по центру (чуть сдвинуто, подгони под картинку)
+        ypos 620          # Высота от верхнего края экрана (надо будет чуть подогнать)
+        spacing 47        # Расстояние между кнопками
 
-    ## The use statement includes another screen inside this one. The actual
-    ## contents of the main menu are in the navigation screen.
-    use navigation
+        # Кнопка Start
+        button:
+            xysize (350, 100) # Ширина и высота кликабельной зоны
+            action Start()
+            idle_background Null() # В обычном состоянии полностью прозрачная
+            hover_background Solid("#ffffff33") # При наведении появляется полупрозрачный белый свет
 
-    if gui.show_name:
+        # Кнопка Settings
+        button:
+            xysize (350, 100)
+            action ShowMenu("preferences")
+            idle_background Null()
+            hover_background Solid("#ffffff33")
 
-        vbox:
-            style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
+        # Кнопка Exit
+        button:
+            xysize (350, 100)
+            action Quit(confirm=not main_menu)
+            idle_background Null()
+            hover_background Solid("#ffffff33")
 
 
 style main_menu_frame is empty

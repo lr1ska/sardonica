@@ -143,7 +143,7 @@ default preferences.afm_time = 15
 ## This generally should not be changed, and if it is, should always be a
 ## literal string, not an expression.
 
-define config.save_directory = "Sardonica-1792082616"
+define config.save_directory = "Sardonica-1794150516"
 
 
 ## Icon ########################################################################
